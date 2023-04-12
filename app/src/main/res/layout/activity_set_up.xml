@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center|top"
+    tools:context=".SetUpActivity"
+    android:orientation="vertical"
+    android:background="@drawable/setup_background"
+    >
+
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:id="@+id/setUpToolBar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="#F75799"-->
+<!--        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.5"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <LinearLayout
+        android:layout_width="342dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/inter_bold"
+            android:gravity="left"
+            android:text="Profile"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            tools:ignore="RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/logout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/inter"
+            android:gravity="right"
+            android:text="LogOut"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="180dp"
+            android:layout_centerInParent="true"
+            >
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profileImage"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:src="@drawable/img_2"
+                app:civ_border_width="3dp"
+                android:elevation="10dp"
+                app:civ_border_color="@color/white"
+                />
+
+        </LinearLayout>
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/select_dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="120dp"
+            android:elevation="2dp"
+            android:src="@drawable/edit_profile" />
+
+    </RelativeLayout>
+
+    <!--
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profileImage"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:src="@drawable/img_2"
+            app:civ_border_width="3dp"
+            android:elevation="10dp"
+            app:civ_border_color="@color/white"
+            />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/editProfileImage"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="115dp"
+            android:layout_marginTop="120dp"
+            android:elevation="2dp"
+            android:src="@drawable/edit_profile" />
+
+    </RelativeLayout>
+    -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Welcome!"
+            android:fontFamily="@font/inter_bold"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            />
+
+        <TextView
+            android:id="@+id/userNameOnProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="John Biden"
+            android:fontFamily="@font/inter_bold"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            />
+    </LinearLayout>
+
+
+
+    <!--    <androidx.cardview.widget.CardView-->
+<!--        android:layout_width="160dp"-->
+<!--        android:layout_height="160dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        app:cardCornerRadius="80dp"-->
+<!--        android:elevation="6dp"-->
+<!--        >-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/profileImage"-->
+<!--            android:layout_width="160dp"-->
+<!--            android:layout_height="160dp"-->
+<!--            android:padding="10dp"-->
+<!--            android:src="@drawable/default_picture"-->
+<!--            android:scaleType="fitXY"/>-->
+<!--    </androidx.cardview.widget.CardView>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:progressTint="#FF7C70"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/userID"
+            android:layout_width="343dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edittext_background"
+            android:hint="Change user id"
+            android:paddingStart="15dp"
+            android:fontFamily="@font/inter"
+            android:inputType="text"
+            android:elevation="4dp"
+            />
+
+        <LinearLayout
+            android:id="@+id/saveButton"
+            android:layout_width="342dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:layout_marginTop="40dp"
+            android:elevation="4dp"
+            android:background="@drawable/rounded_button"
+            >
+
+            <TextView
+                android:id="@+id/buttonTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Save"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:fontFamily="@font/inter"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center|top"
+    tools:context=".Signup_page">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="343dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/inter_bold"
+            android:gravity="left"
+            android:text="Sign Up"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            />
+
+        <TextView
+            android:id="@+id/goto_signin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/inter"
+            android:gravity="right"
+            android:text="Login"
+            android:textColor="#F75799"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="235dp"
+        android:layout_height="235dp"
+        android:src="@drawable/signup_img"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        />
+
+<!--    <EditText-->
+<!--        android:id="@+id/name"-->
+<!--        android:layout_width="343dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:background="@drawable/edittext_background"-->
+<!--        android:hint="Name"-->
+<!--        android:paddingStart="15dp"-->
+<!--        android:fontFamily="@font/inter"-->
+<!--        android:inputType="textEmailAddress"-->
+<!--        android:elevation="4dp"-->
+<!--        />-->
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="343dp"
+        android:layout_height="50dp"
+        android:background="@drawable/edittext_background"
+        android:hint="Email"
+        android:layout_marginTop="25dp"
+        android:paddingStart="15dp"
+        android:fontFamily="@font/inter"
+        android:inputType="textEmailAddress"
+        android:elevation="4dp"
+        />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="343dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/edittext_background"
+        android:hint="Password"
+        android:paddingStart="15dp"
+        android:fontFamily="@font/inter"
+        android:inputType="textPassword"
+        android:elevation="4dp"
+        android:imeOptions="actionNext"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        >
+
+        <RadioButton
+            android:id="@+id/agree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter"
+            android:textColor="@color/black"
+            android:text="I agree to InstaTwin "
+            android:textSize="12sp"
+            android:buttonTint="#F75799"
+            android:paddingStart="7dp"/>
+
+        <TextView
+            android:id="@+id/term"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:fontFamily="@font/inter"
+            android:text="Terms and Conditions"
+            android:textAlignment="center"
+            android:textColor="#F75799"
+            android:textSize="12sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/signUpButton"
+        android:layout_width="342dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:elevation="4dp"
+        android:background="@drawable/rounded_button"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:fontFamily="@font/inter"
+            />
+    </LinearLayout>
+
+</LinearLayout>

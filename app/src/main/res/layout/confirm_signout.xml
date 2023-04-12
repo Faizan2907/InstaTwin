@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/delete_card"
+    android:layout_width="339dp"
+    android:layout_height="200dp"
+    android:layout_margin="10dp"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="5dp">
+
+    <LinearLayout
+        android:layout_width="339dp"
+        android:layout_height="200dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_bold"
+            android:text="Log Out?"
+            android:layout_marginTop="20dp"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter"
+            android:layout_marginTop="20dp"
+            android:text="Are you sure you want to Log out?"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="23dp">
+
+            <FrameLayout
+                android:id="@+id/cancel_logout"
+                android:layout_width="130dp"
+                android:layout_height="45dp"
+                android:background="@drawable/backgorund_button_borders_only">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/inter"
+                    android:gravity="center"
+                    android:text="Cancel"
+                    android:textColor="#F75799"
+                    android:textSize="18sp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/confirm_logout"
+                android:layout_width="130dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="23dp"
+                android:background="@drawable/rounded_button">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/inter"
+                    android:gravity="center"
+                    android:text="Confirm"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+            </FrameLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "417344348752",
+    "project_id": "insta-twin-app",
+    "storage_bucket": "insta-twin-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:417344348752:android:47d411c1673b0209e2e755",
+        "android_client_info": {
+          "package_name": "com.example.instatwin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "417344348752-q6ip3ds13q7l7rolf0kci77ijqosml3m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBR1kl0FTJs_EKht7nN8r8b-61UaM_1vZQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "417344348752-q6ip3ds13q7l7rolf0kci77ijqosml3m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
