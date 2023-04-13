@@ -1,11 +1,14 @@
 package com.example.instatwin.Adapter;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.instatwin.CommentsActivity;
 import com.example.instatwin.Model.Post;
+import com.example.instatwin.Model.Users;
 import com.example.instatwin.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -26,6 +30,7 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.Date;
@@ -40,12 +45,14 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
     private List<Post> elist;
     private Activity context;
+    private List<Users> usersList;
     private FirebaseFirestore firebaseFirestore;
     private FirebaseAuth auth;
 
-    public PostAdapter(List<Post> elist, Activity context) {
+    public PostAdapter(List<Post> elist, Activity context, List<Users> usersList) {
         this.elist = elist;
         this.context = context;
+        this.usersList = usersList;
     }
 
     @NonNull
@@ -59,7 +66,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
-        Post post = elist.get(position);
+        Post post = elist.get(holder.getAdapterPosition());
         holder.setPostPic(post.getImage());
         holder.setPostCaption(post.getCaption());
 
@@ -67,22 +74,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         String date = DateFormat.format("MM/dd/yyyy", new Date(milliseconds)).toString();
         holder.setPostDate(date);
 
-        String userId = post.getUser();
-        firebaseFirestore.collection("Users").document(userId).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()){
-                    String username = task.getResult().getString("userid");
-                    String image = task.getResult().getString("image");
+        String username = usersList.get(holder.getAdapterPosition()).getUserid();
+        String image = usersList.get(holder.getAdapterPosition()).getImage();
 
-                    holder.setProfilePic(image);
-                    holder.setPostUserName(username);
-                }else{
-                    Toast.makeText(context, task.getException().toString(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-        
+        holder.setProfilePic(image);
+        holder.setPostUserName(username);
+
         // Like Button Code
         String postId = post.PostId;
         String currentUserId = auth.getCurrentUser().getUid();
@@ -143,6 +140,47 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
                 context.startActivity(commentIntent);
             }
         });
+
+        if (currentUserId.equals(post.getUser())){
+            holder.deleteBtn.setVisibility(View.VISIBLE);
+            holder.deleteBtn.setClickable(true);
+            holder.deleteBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlertDialog.Builder alert = new AlertDialog.Builder(context);
+                    alert.setTitle("Delete")
+                            .setMessage("Are you sure?")
+                            .setNegativeButton("No", null)
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    firebaseFirestore.collection("Posts/"+postId+"/Comments").get()
+                                                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                            for (QueryDocumentSnapshot snapshot : task.getResult()){
+                                                                firebaseFirestore.collection("Posts/"+postId+"/Comments").document(snapshot.getId()).delete();
+                                                            }
+                                                        }
+                                                    });
+                                    firebaseFirestore.collection("Posts/"+postId+"/Likes").get()
+                                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                    for (QueryDocumentSnapshot snapshot : task.getResult()){
+                                                        firebaseFirestore.collection("Posts/"+postId+"/Likes").document(snapshot.getId()).delete();
+                                                    }
+                                                }
+                                            });
+                                    firebaseFirestore.collection("Posts").document(postId).delete();
+                                    elist.remove(holder.getAdapterPosition());
+                                    notifyDataSetChanged();
+                                }
+                            });
+                    alert.show();
+                }
+            });
+        }
     }
 
     @Override
@@ -154,6 +192,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         ImageView postPic, commentsPic, likePic;
         CircleImageView profilePic;
         TextView postUserName, postDate, postCaption, postLikes;
+        ImageButton deleteBtn;
         View mView;
 
         public PostViewHolder(@NonNull View itemView) {
@@ -161,6 +200,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             mView = itemView;
             likePic = itemView.findViewById(R.id.likeBtn);
             commentsPic = itemView.findViewById(R.id.comment_section);
+            deleteBtn = itemView.findViewById(R.id.deleteIcon);
         }
 
         public void setCommentsPic(){

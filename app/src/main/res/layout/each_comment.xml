@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="100dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -14,6 +14,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +26,7 @@
             android:layout_height="match_parent">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profilePic"
+                android:id="@+id/profilePicComment"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="16dp"
@@ -44,23 +45,35 @@
                 android:fontFamily="@font/inter"
                 android:text="Username"
                 android:textColor="@color/black"
-                android:textSize="12sp"
-                app:layout_constraintStart_toEndOf="@+id/profilePic"
-                app:layout_constraintTop_toTopOf="@+id/profilePic" />
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@+id/profilePicComment"
+                app:layout_constraintTop_toTopOf="@+id/profilePicComment" />
 
             <TextView
                 android:id="@+id/userCommentTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:fontFamily="@font/inter"
                 android:text="Comment"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                app:layout_constraintStart_toEndOf="@+id/profilePic"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/profilePicComment"
                 app:layout_constraintTop_toBottomOf="@+id/userNameTV" />
 
+            <ImageButton
+                android:id="@+id/deleteIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/white"
+                android:visibility="invisible"
+                android:clickable="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_baseline_delete_outline_24" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

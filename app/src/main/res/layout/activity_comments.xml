@@ -30,6 +30,7 @@
         android:hint="Add a comment"
         android:inputType="textEmailAddress"
         android:paddingStart="15dp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/addCommentBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

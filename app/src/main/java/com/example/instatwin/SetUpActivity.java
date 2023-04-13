@@ -63,8 +63,6 @@ public class SetUpActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private boolean isPhotoSelected = false;
 
-    private Uri downloadUri = null;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -150,7 +148,12 @@ public class SetUpActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                                 if (task.isSuccessful()){
-                                    saveToFireStore(task, user, imageRef);
+                                    imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                        @Override
+                                        public void onSuccess(Uri uri) {
+                                            saveToFireStore(task, user, uri);
+                                        }
+                                    });
                                 }else {
                                     progressBar.setVisibility(View.INVISIBLE);
                                     Toast.makeText(SetUpActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -162,7 +165,7 @@ public class SetUpActivity extends AppCompatActivity {
                         Toast.makeText(SetUpActivity.this, "Please select the picture and add a UserId", Toast.LENGTH_SHORT).show();
                     }
                 }else{
-                    saveToFireStore(null, user, imageRef);
+                    saveToFireStore(null, user, mImageUri);
                 }
             }
         });
@@ -195,18 +198,7 @@ public class SetUpActivity extends AppCompatActivity {
 
     }
 
-    private void saveToFireStore(Task<UploadTask.TaskSnapshot> task, String user, StorageReference imageRef) {
-
-        if (task != null){
-            imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                @Override
-                public void onSuccess(Uri uri) {
-                    downloadUri = uri;
-                }
-            });
-        }else{
-            downloadUri = mImageUri;
-        }
+    private void saveToFireStore(Task<UploadTask.TaskSnapshot> task, String user, Uri downloadUri) {
 
         HashMap<String, Object> map = new HashMap<>();
         map.put("userid", user);
