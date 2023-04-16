@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.instatwin.Adapter.CommentsAdapter;
 import com.example.instatwin.Model.Comments;
+import com.example.instatwin.Model.Post;
 import com.example.instatwin.Model.Users;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -52,6 +53,8 @@ public class CommentsActivity extends AppCompatActivity {
     private CommentsAdapter adapter;
     private List<Comments> mList;
     private List<Users> usersList;
+    private List<Post> elist;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,8 +73,9 @@ public class CommentsActivity extends AppCompatActivity {
 
         mList = new ArrayList<>();
         usersList = new ArrayList<>();
+        elist = new ArrayList<>();
 
-        adapter = new CommentsAdapter(CommentsActivity.this, mList, usersList);
+        adapter = new CommentsAdapter(CommentsActivity.this, mList, usersList, postId);
         commentRecyclerView.setHasFixedSize(true);
         commentRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 

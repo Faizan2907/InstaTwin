@@ -181,6 +181,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
                 }
             });
         }
+        else {
+            holder.deleteBtn.setVisibility(View.GONE); // or INVISIBLE if you want to keep the space
+            holder.deleteBtn.setClickable(false);
+        }
     }
 
     @Override
@@ -216,18 +220,22 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             postPic = mView.findViewById(R.id.postImageEachImage);
             Glide.with(context).load(urlPost).into(postPic);
         }
+
         public void setProfilePic(String urlProfile){
             profilePic = mView.findViewById(R.id.profilePic);
             Glide.with(context).load(urlProfile).into(profilePic);
         }
+
         public void setPostUserName(String userName){
             postUserName = mView.findViewById(R.id.userNameEachPost);
             postUserName.setText(userName);
         }
+
         public void setPostDate(String date){
             postDate = mView.findViewById(R.id.dateTV);
             postDate.setText(date);
         }
+
         public void setPostCaption(String caption){
             postCaption = mView.findViewById(R.id.caption_TV);
             postCaption.setText(caption);
