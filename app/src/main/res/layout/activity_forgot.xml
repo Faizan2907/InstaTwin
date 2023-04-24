@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center|top"
-    tools:context=".Signin_page">
+    tools:context=".ForgotActivity">
 
     <!-- Header -->
     <LinearLayout
         android:layout_width="343dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:orientation="vertical">
+        >
 
         <ImageView
             android:id="@+id/imgBack"
@@ -25,53 +25,53 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-40dp"
             android:fontFamily="@font/inter_bold"
             android:gravity="center_horizontal"
             android:text="Log In"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="30sp" />
 
     </LinearLayout>
 
-
-    <ImageView
-        android:layout_width="235dp"
-        android:layout_height="235dp"
-        android:src="@drawable/login_image"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Forgot Password"
+        android:textColor="@color/black"
+        android:fontFamily="@font/inter_bold"
+        android:textFontWeight="700"
+        android:textSize="32sp"
+        android:layout_marginTop="55dp"
         />
-    
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter your registered email"
+        android:textColor="@color/black"
+        android:fontFamily="@font/inter"
+        android:textFontWeight="400"
+        android:textSize="16sp"
+        android:layout_marginTop="8dp"
+        />
+
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/emailForForgetPassword"
         android:layout_width="343dp"
         android:layout_height="50dp"
         android:background="@drawable/edittext_background"
         android:hint="Email"
         android:paddingStart="15dp"
+        android:layout_marginTop="40dp"
         android:textSize="16sp"
         android:fontFamily="@font/inter"
         android:inputType="textEmailAddress"
         android:elevation="4dp"
         />
 
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="343dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/edittext_background"
-        android:hint="Password"
-        android:textSize="16sp"
-        android:paddingStart="15dp"
-        android:fontFamily="@font/inter"
-        android:inputType="textPassword"
-        android:elevation="4dp"
-        />
-    
     <LinearLayout
-        android:id="@+id/loginButton"
+        android:id="@+id/sendMailButton"
         android:layout_width="342dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -83,22 +83,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Log In"
+            android:text="Send email"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:fontFamily="@font/inter"
             />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/forgotpassword"
-        android:layout_width="match_parent"
-        android:layout_height="21dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/inter"
-        android:gravity="center"
-        android:text="Forget your password?"
-        android:textColor="#F75799"
-        android:textSize="16sp" />
 
 </LinearLayout>
