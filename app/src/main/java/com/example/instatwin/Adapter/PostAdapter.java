@@ -83,6 +83,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         // Like Button Code
         String postId = post.PostId;
         String currentUserId = auth.getCurrentUser().getUid();
+
         holder.likePic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

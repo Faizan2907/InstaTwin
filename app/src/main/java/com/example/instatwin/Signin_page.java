@@ -41,6 +41,14 @@ public class Signin_page extends AppCompatActivity {
 
         imageBack = findViewById(R.id.imgBack);
 
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Signin_page.this, ForgotActivity.class));
+                finish();
+            }
+        });
+
         imageBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
